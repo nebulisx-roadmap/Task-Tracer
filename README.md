@@ -3,6 +3,17 @@
 
 A Simple task tracer cli for Roadmap.sh [Task Tracer Project](https://roadmap.sh/projects/task-tracker)
 
+## Installation
+
+Clone this repo into your device then run this commands inside it.
+
+```bash
+$ bun run build
+$ bun link
+```
+
+> **Note:** This app uses Bun.
+
 ## Getting Started
 
 To use the task tracer CLI, simply run the command `nx-tasker` followed by the desired action.
