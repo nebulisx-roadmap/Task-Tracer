@@ -36,19 +36,19 @@ switch (positionals[0]) {
     commands.list(positionals[1] as "done" | "pending" | "in-progress" | undefined)
     break;
   case "delete":
-    commands.remove(parseInt(positionals[1]))
+    commands.remove(positionals[1])
     break;
   case "update":
-    commands.update(parseInt(values.id as string), values.task as string)
+    commands.update(positionals[1], positionals[2])
     break;
   case "mark-done":
-    commands["update-status"](parseInt(positionals[1]), "done")
+    commands["update-status"](positionals[1], "done")
     break;
   case "mark-pending":
-    commands["update-status"](parseInt(positionals[1]), "pending")
+    commands["update-status"](positionals[1], "pending")
     break;
   case "mark-in-progress":
-    commands["update-status"](parseInt(positionals[1]), "in-progress")
+    commands["update-status"](positionals[1], "in-progress")
     break;
   default:
     console.log("Invalid command");
