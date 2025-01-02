@@ -1,6 +1,5 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 import { parseArgs } from "util"
-import * as db from "./lib/db"
 import { commands } from "./commands"
 
 const args = process.argv.slice(2);
@@ -30,13 +29,13 @@ const { values, positionals } = parseArgs({
 
 switch (positionals[0]) {
   case "add":
-    commands.add(positionals[1])
+    commands.add(...positionals.slice(1))
     break;
   case "list":
     commands.list(positionals[1] as "done" | "pending" | "in-progress" | undefined)
     break;
   case "delete":
-    commands.remove(positionals[1])
+    commands.remove(...positionals.slice(1))
     break;
   case "update":
     commands.update(positionals[1], positionals[2])
