@@ -2,7 +2,7 @@ const tasksPath = "lib/tasks.json";
 const tasksFile = await Bun.file(tasksPath);
 
 interface Task {
-  id: string; // This should be a number, but it's a string in the JSON file. It Should be day + minutes + seconds
+  id: string;
   description: string;
   status: "pending" | "in-progress" | "done";
   createdAt: string;
@@ -16,18 +16,22 @@ export const get = () => {
 };
 
 export const add = async (description: string) => {
-  tasks.push({
-    id: `${new Date().getDay()}${new Date().getMinutes()}${new Date().getSeconds()}`,
+  const task = {
+    id: `${tasks.length}`,
     description,
-    status: "pending",
+    status: "pending" as "pending" | "in-progress" | "done",
     createdAt: new Date().toUTCString(),
     updatedAt: new Date().toUTCString(),
-  });
+  }
+  tasks.push(task);
   await saveTasks();
+
+  return task.id
 };
 
 export const remove = async (id: string) => {
   tasks = tasks.filter((task) => task.id !== id);
+  resolveIds();
   await saveTasks();
 };
 
@@ -54,6 +58,10 @@ export const update = async (id: string, description: string) => {
   task.description = description;
   task.updatedAt = new Date().toUTCString();
   await saveTasks();
+};
+
+const resolveIds = () => {
+  tasks.map((task, index) => task.id = index.toString());
 };
 
 const saveTasks = async () => {
