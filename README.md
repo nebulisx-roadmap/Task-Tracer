@@ -1,7 +1,8 @@
 
 # Nx Task Tracer
 
-A Simple task tracer cli for Roadmap.sh [Task Tracer](https://roadmap.sh/projects/task-tracker)
+Sample solution for the [task-tracker](https://roadmap.sh/projects/task-tracker) challenge from [roadmap.sh](https://roadmap.sh/).
+
 
 ## Installation
 
