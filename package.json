@@ -1,0 +1,25 @@
+{
+  "name": "nx-task-tracer",
+  "version": "v1.0.0-alpha",
+  "description": "A simple task tracer",
+  "main": "index.ts",
+  "module": "index.ts",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "nx-tasker": "build/index.js"
+  },
+  "scripts": {
+    "build": "bun build --entry index.ts --outdir build --target bun"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/yargs": "^17.0.33"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "yargs": "^17.7.2"
+  }
+}
